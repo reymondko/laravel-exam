@@ -13,15 +13,14 @@ INSERT INTO tablename ( id, name ) VALUES ( null, 'Sample data' );
 
 #create Users table
 CREATE TABLE `BuildTools`.`Users` (
-  `id` INT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `fullname` VARCHAR(250) NULL,
   `email` VARCHAR(100) NULL,
   `password` VARCHAR(100) NULL,
-  `datecreated` TIMESTAMP NULL,
-  `dateupdated` TIMESTAMP NULL,
+  `datecreated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `dateupdated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
-  PRIMARY KEY (`id`));
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC));
 
 
 #create Task table

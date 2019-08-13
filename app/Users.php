@@ -15,4 +15,9 @@ class Users extends Model
     protected $table = 'Users';
 
     public $timestamps = true;
+
+    public function tasks()
+    {
+        return $this->hasMany('App\TaskAssign', 'user_id', 'id');
+    }
 }

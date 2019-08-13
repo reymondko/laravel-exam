@@ -4,8 +4,8 @@ CREATE TABLE `BuildTools`.`Users` (
   `fullname` VARCHAR(250) NULL,
   `email` VARCHAR(100) NULL,
   `password` VARCHAR(100) NULL,
-  `datecreated` TIMESTAMP NULL,
-  `dateupdated` TIMESTAMP NULL,
+  `created_at` TIMESTAMP NULL,
+  `updated_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
   PRIMARY KEY (`id`));
