@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Users;
+use App\Tasks;
 class UsersController extends Controller
 {
     /**
@@ -91,5 +92,18 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function tasklist(Request $request, $id)
+    {
+         $assignedtasks = Users::find($id);
+         
+        $atask =  $assignedtasks->tasks;
+        $x = json_decode($atask, TRUE);
+        $task_ids = array_column($x, 'task_id');
+        $tasks= Tasks::findMany($task_ids);
+
+        return view('users.showtasks')->with('assignedtasks', $tasks);
+      
     }
 }

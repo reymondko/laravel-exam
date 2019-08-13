@@ -15,8 +15,9 @@ class Tasks extends Model
 
     public $timestamps = true;
 
+   
     public function users()
     {
-        return $this->hasMany('App\TaskAssign', 'task_id', 'id');
+        return $this->hasMany('App\TaskAssign', 'user_id', 'id');
     }
 }

@@ -18,6 +18,6 @@ class Users extends Model
 
     public function tasks()
     {
-        return $this->hasMany('App\TaskAssign', 'user_id', 'id');
+         return $this->hasMany('App\TaskAssign', 'user_id', 'id');
     }
 }

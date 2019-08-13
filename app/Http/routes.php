@@ -21,18 +21,7 @@ Route::resource('tasks','TasksController');
 
 Route::resource('taskassign','TaskAssignController');
 
-Route::get('tasklist/{id?}', function($id=1){
-   
-    $assignedtasks = App\Users::find($id);
-    #echo $assignedtasks;
-    echo $assignedtasks->tasks;
-    foreach($assignedtasks->tasks as $atask){
-        $task = App\Tasks::find($atask->task_id);
-        echo  "<br> ".$assignedtasks->fullname ."  assigned to". $task->subject."<br>";
-    }
-    #echo $users->tasks." ". $users->fullname . " ". $users->subject; 
-    //echo $tasks;
-});
+Route::resource('tasklist/{id?}','UsersController@tasklist');
 
 Route::get('userlist_assigned/{id?}', function($id=1){
     
@@ -43,6 +32,5 @@ Route::get('userlist_assigned/{id?}', function($id=1){
         $users = App\Users::find($atask->user_id);
         echo  "<br>".$assignedusers->subject   ."assigned to   ". $users->fullname."<br>";
     }
-    #echo $users->tasks." ". $users->fullname . " ". $users->subject; 
-    //echo $tasks;
+    
 });
