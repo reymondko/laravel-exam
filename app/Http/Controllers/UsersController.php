@@ -80,7 +80,17 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+    }
+
+    public function updateusertype(Request $request)
+    {
+       
+        $user = Users::find($request->userid);
+        
+        $user->usertype = $request->typeID;
+
+        $user->save();
     }
 
     /**
@@ -96,7 +106,7 @@ class UsersController extends Controller
 
     public function tasklist(Request $request, $id)
     {
-         $assignedtasks = Users::find($id);
+        $assignedtasks = Users::find($id);
          
         $atask =  $assignedtasks->tasks;
         $x = json_decode($atask, TRUE);

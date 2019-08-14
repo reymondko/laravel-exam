@@ -21,8 +21,13 @@ Route::resource('tasks','TasksController');
 
 Route::resource('taskassign','TaskAssignController');
 
+Route::resource('assigneduser','TasksController@assigneduser');
+
+Route::resource('updateusertype','UsersController@updateusertype');
+
 Route::resource('tasklist/{id?}','UsersController@tasklist');
 
+/*
 Route::get('userlist_assigned/{id?}', function($id=1){
     
     $assignedusers = App\Tasks::find($id);
@@ -33,4 +38,4 @@ Route::get('userlist_assigned/{id?}', function($id=1){
         echo  "<br>".$assignedusers->subject   ."assigned to   ". $users->fullname."<br>";
     }
     
-});
+});*/

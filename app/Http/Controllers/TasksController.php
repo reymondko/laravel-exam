@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tasks;
+use App\Users;
 
 class TasksController extends Controller
 {
@@ -86,4 +87,18 @@ class TasksController extends Controller
     {
         //
     }
+    public function assigneduser(Request $request)
+    {
+        $taskid = $request->taskid;
+        $assignedusers = Tasks::find($taskid);
+        $ausers = $assignedusers->users;
+        
+        $x = json_decode($ausers, TRUE);
+        $user_ids = array_column($x, 'user_id');
+        $users= Users::findMany($user_ids);
+
+        return view('tasks.viewusers')->with('assignedusers', $users);
+        #echo $assignedusers;
+    }
+
 }
