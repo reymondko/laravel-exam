@@ -101,4 +101,27 @@ class TasksController extends Controller
         #echo $assignedusers;
     }
 
+    public function uploadFile()
+    {
+        //get the file
+        $file = Input::file('file');
+
+        //create a file path
+        $path = 'uploads/';
+
+        //get the file name
+        $file_name = $file->getClientOriginalName();
+
+        //save the file to your path
+        $file->move($path , $file_name); //( the file path , Name of the file)
+
+        //save that to your database
+        $new_file = new Uploads(); //your database model
+        $new_file->file_path = $path . $file_name;
+        $new_file->save();
+
+        //return something (sorry, this is a  habbit of mine)
+        return 'something';
+    }
+
 }

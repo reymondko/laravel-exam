@@ -21,5 +21,19 @@ class TasksTableSeeder extends Seeder
             'created_at' =>date("Y-m-d H:i:s"),
             'updated_at' =>date("Y-m-d H:i:s"),
         ]);
+        
+        DB::table('Tasks')->insert([
+            'subject' => "task ".Str::random(10),
+            'body' => Str::random(30),
+            'created_at' =>date("Y-m-d H:i:s"),
+            'updated_at' =>date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('Tasks')->insert([
+            'subject' => "task ".Str::random(10),
+            'body' => Str::random(30),
+            'created_at' =>date("Y-m-d H:i:s"),
+            'updated_at' =>date("Y-m-d H:i:s"),
+        ]);
     }
 }

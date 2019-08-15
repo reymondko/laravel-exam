@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskAssignTable extends Migration
+class CreateUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateTaskAssignTable extends Migration
      */
     public function up()
     {
-        Schema::create('TaskAssign', function (Blueprint $table) {
+        Schema::create('uploads', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->string('filename');
             $table->integer('task_id');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateTaskAssignTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Tasks');
+        Schema::drop('uploads');
     }
 }

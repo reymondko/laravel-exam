@@ -17,6 +17,25 @@ class UsersTableSeeder extends Seeder
             'fullname' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Str::random(10),
+            'usertype' => 1,
+            'created_at' =>date("Y-m-d H:i:s"),
+            'updated_at' =>date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('Users')->insert([
+            'fullname' => Str::random(10),
+            'email' => Str::random(10).'@gmail.com',
+            'password' => Str::random(10),
+            'usertype' => 2,
+            'created_at' =>date("Y-m-d H:i:s"),
+            'updated_at' =>date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('Users')->insert([
+            'fullname' => Str::random(10),
+            'email' => Str::random(10).'@gmail.com',
+            'password' => Str::random(10),
+            'usertype' => 3,
             'created_at' =>date("Y-m-d H:i:s"),
             'updated_at' =>date("Y-m-d H:i:s"),
         ]);

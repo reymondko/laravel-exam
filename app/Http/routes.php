@@ -32,3 +32,6 @@ Route::resource('tasklist/{id?}','UsersController@tasklist');
 Route::resource('deleteAssignedUser','TaskAssignController@deleteUser');
 
 Route::resource('assignUser','TaskAssignController@create');
+
+ Route::post('add-catagory',['as'=>'catagory_add','uses'=>'TasksController@uploadFile']);
+#Route::post('uploadFile', 'TasksController@uploadFile');
