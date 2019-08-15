@@ -25,17 +25,10 @@ Route::resource('assigneduser','TasksController@assigneduser');
 
 Route::resource('updateusertype','UsersController@updateusertype');
 
+Route::resource('assignusers','UsersController@AssignableUsers');
+
 Route::resource('tasklist/{id?}','UsersController@tasklist');
 
-/*
-Route::get('userlist_assigned/{id?}', function($id=1){
-    
-    $assignedusers = App\Tasks::find($id);
-    #echo $assignedtasks;
-    echo $assignedusers->users;
-    foreach($assignedusers->users as $atask){
-        $users = App\Users::find($atask->user_id);
-        echo  "<br>".$assignedusers->subject   ."assigned to   ". $users->fullname."<br>";
-    }
-    
-});*/
+Route::resource('deleteAssignedUser','TaskAssignController@deleteUser');
+
+Route::resource('assignUser','TaskAssignController@create');

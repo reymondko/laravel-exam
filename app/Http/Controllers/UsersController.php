@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 use App\Users;
 use App\Tasks;
 class UsersController extends Controller
@@ -115,5 +116,17 @@ class UsersController extends Controller
 
         return view('users.showtasks')->with('assignedtasks', $tasks);
       
+    }
+
+    public function AssignableUsers(Request $request)
+    {
+        $taskid=$request->taskid;
+        $users = Users::leftJoin('TaskAssign', function($join)  use ($taskid){
+            $join->on('users.id', '=', 'TaskAssign.user_id');
+            $join->on('task_id','=',DB::raw("'".$taskid."'"));
+          })->whereIn('usertype', [1, 2])
+          ->select(DB::raw("'".$taskid."'as TaskID"), 'users.*','TaskAssign.id AS aid','TaskAssign.task_id AS tid','TaskAssign.user_id AS uid')->get();
+        
+        return view('users.assignusers')->with('users', $users);
     }
 }

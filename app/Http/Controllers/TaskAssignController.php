@@ -26,9 +26,11 @@ class TaskAssignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $inputs= $request->all();
+        $TaskAssign = TaskAssign::create($inputs);
+        return "task assigned";
     }
 
     /**
@@ -85,5 +87,12 @@ class TaskAssignController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $assigned = TaskAssign::find($request->atask);
+        $assigned->delete();
+        return "user has been removed";
     }
 }
